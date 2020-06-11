@@ -67,7 +67,6 @@ namespace Classes
             report.AppendLine($"---------------------------------------------------------------------------------");
             report.AppendLine($"{"Type",-10}{"Date",-15}{"Amount",-10}{"Balance",-10}{"Note",-20}");
             report.AppendLine($"---------------------------------------------------------------------------------");
-            // \t\tAmount\t\tBalance\t\tNote");
             foreach (var transaction in allTransactions)
             {
                 string transactionType = "Credit";
@@ -78,7 +77,6 @@ namespace Classes
                 balance += transaction.Amount;
                 report.AppendLine(
                     $"{transactionType,-10}{transaction.Date.ToShortDateString(),-15}{transaction.Amount,-10}{balance,-10}{transaction.Notes}");
-                // \t\t\t");
             }
             return report.ToString();
         }
