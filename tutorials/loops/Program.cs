@@ -44,7 +44,7 @@ namespace BranchesAndLoops
 
         static void ExploreLoops()
         {
-            int counter = 0;
+            var counter = 0;
 
             // While loop
             while (counter < 10)
@@ -62,15 +62,15 @@ namespace BranchesAndLoops
             } while (counter < 5);
 
             // For loop
-            for (int index = 0; index < 5; index++)
+            for (var index = 0; index < 5; index++)
             {
                 Console.WriteLine($"Current index is {index}");
             }
 
             // Nested loops
-            for (int row = 1; row < 11; row++)
+            for (var row = 1; row < 11; row++)
             {
-                for (char col = 'a'; col < 'k'; col++)
+                for (var col = 'a'; col < 'k'; col++)
                 {
                     Console.WriteLine($"The cell is ({row}, {col})");
                 }
@@ -84,8 +84,8 @@ namespace BranchesAndLoops
         /// <returns>The sum of numbers between 1 and 20 that are divisible by 3</returns>
         static void SumOfNumbersDivisibleByThree()
         {
-            int sum = 0;
-            for (int i = 1; i < 21; i++)
+            var sum = 0;
+            for (var i = 1; i < 21; i++)
             {
                 if (i % 3 == 0)
                 {
