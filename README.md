@@ -1,4 +1,4 @@
-# C# beginner tutorials from Microsoft docs
+# C# beginner tutorials snippets
 
 These are a collection of snippets from the topics in the official C# tutorial. The projects are organized into sub-folders in the same way they appear in the docs.
 
