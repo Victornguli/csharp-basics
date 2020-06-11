@@ -56,7 +56,7 @@ namespace ListTutorial
         /// <summary>Finds the nth number in a fibonacci sequence</summary>
         static void GenerateFibonacci(int limit)
         {
-            var fibSeries = new List<int> { };
+            var fibSeries = new List<int>();
             int previous = 0;
             int previous2 = 0;
             for (int j = 0; j < limit; j++)
