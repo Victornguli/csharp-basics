@@ -82,7 +82,7 @@ namespace BranchesAndLoops
         /// write C# code to find the sum of all integers 1 through 20 that are divisible by 3
         /// </summary>
         /// <returns>The sum of numbers between 1 and 20 that are divisible by 3</returns>
-        static int SumOfNumbersDivisibleByThree()
+        static void SumOfNumbersDivisibleByThree()
         {
             int sum = 0;
             for (int i = 1; i < 21; i++)
@@ -92,15 +92,14 @@ namespace BranchesAndLoops
                     sum += i;
                 }
             }
-            return sum;
+            Console.WriteLine($"The sum is {sum}");
         }
 
         static void Main(string[] args)
         {
             ExploreIf();
             ExploreLoops();
-            int SumOfNumbersDivisibleByThree = SumOfNumbersDivisibleByThree();
-            Console.WriteLine(SumOfNumbersDivisibleByThree);
+            SumOfNumbersDivisibleByThree();
         }
     }
 }
