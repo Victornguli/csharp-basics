@@ -26,8 +26,11 @@ namespace MainMethodAndCli
     {
         public static int Main(string[] args)
         {
-            var argsFromEnviron = Environment.GetCommandLineArgs();
-
+            Console.WriteLine($"parameter count = {args.Length}");
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine($"Args[{i}] = [{args[i]}]");
+            }
             // Test if input arguments were supplied.
             if (args.Length == 0)
             {
