@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net.Http;
+
 
 namespace AysncBreakfast
 {
@@ -26,6 +28,15 @@ namespace AysncBreakfast
 
     class Program
     {
+
+        static async Task<int> AccessTheWebAsync()
+        {
+            var client = new HttpClient();
+            string urlContents = await client.GetStringAsync("https://docs.microsoft.com/dotnet");
+            return urlContents.Length;
+        
+        }
+
         static async Task Main(string[] args)
         {
             Coffee cup = PourCoffee(1);
@@ -56,6 +67,9 @@ namespace AysncBreakfast
             Juice juice = PourJuice();
             Console.WriteLine("juice is ready");
             Console.WriteLine("Breakfast is ready");
+
+            int length = await AccessTheWebAsync();
+            Console.WriteLine($"The length of the content is {length}");
         }
         
         static async Task<Toast> MakeToastWithButterAndJamAsync(int number)
