@@ -43,21 +43,21 @@ namespace AsyncExampleWPF
         {
             var urls = new List<string>
             {
-                "https://msdn.micosoft.com/library/windows/apps/br211380.aspx",
-                "https://msdn.mirosoft.com",
-                "https://msdn.mcrosoft.com/library/hh290136.aspx",
-                "https://msdn.mcrosoft.com/library/ee256749.aspx",
-                "https://msdn.mirosoft.com/library/hh290138.aspx",
-                "https://msdn.mirosoft.com/library/hh290140.aspx",
-                "https://msdn.micosoft.com/library/dd470362.aspx",
-                "https://msdn.microsoft.com/Japan/DirectX/default.asp?",
-                "https://msdn.microsoft.com/Japan/DirectX/default.asp?",
-                "https://msdn.microsoft.com/Japan/DirectX/default.asp?"
+                "https://msdn.microsoft.com/library/windows/apps/br211380.aspx",
+                "https://msdn.microsoft.com",
+                "https://msdn.microsoft.com/library/hh290136.aspx",
+                "https://msdn.microsoft.com/library/ee256749.aspx",
+                "https://msdn.microsoft.com/library/hh290138.aspx",
+                "https://msdn.microsoft.com/library/hh290140.aspx",
+                "https://msdn.microsoft.com/library/dd470362.aspx",
+                "https://msdn.microsoft.com/library/aa578028.aspx",
+                "https://msdn.microsoft.com/library/ms404677.aspx",
+                "https://msdn.microsoft.com/library/ff730837.aspx"
             };
             return urls;
         }
 
-        private async Task<byte[]> getUrlContentsAsync(string url)
+        private async Task<(byte[], string)> getUrlContentsAsync(string url)
         {
             var content = new MemoryStream();
 
@@ -99,20 +99,36 @@ namespace AsyncExampleWPF
                 }
             }
 
-
-            return content.ToArray();
+            return (content.ToArray(), url);
         }
 
         private async Task SumPageSizesAsync()
         {
             List<string> urlList = SetUpURLList();
+            var getAllUrlsTask = new List<Task<(byte[], string)>>();
 
-            var total = 0;
             foreach (var url in urlList)
             {
-                byte[] urlContents = await getUrlContentsAsync(url);
+                Task<(byte[], string)> getUrlTask = getUrlContentsAsync(url);
+                getAllUrlsTask.Add(getUrlTask);
+            }
+
+            await callUrlsAsync(getAllUrlsTask);
+        }
+
+        private async Task callUrlsAsync(List<Task<(byte[], string)>> getUrlTasks)
+        {
+            var total = 0;
+
+            while (getUrlTasks.Count != 0)
+            {
+                Task<(byte[], string)> getUrlContentsTask = await Task.WhenAny(getUrlTasks);
+                var res = await getUrlContentsTask;
+                byte[] urlContents = res.Item1;
+                string url = res.Item2;
                 displayResults(url, urlContents);
                 total += urlContents.Length;
+                getUrlTasks.Remove(getUrlContentsTask);
             }
 
             resultsTextBox.Text += $"\r\n\r\nTotal bytes returned: {total} \r\n";
