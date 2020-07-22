@@ -57,14 +57,20 @@ namespace AsyncExampleWPF
             return urls;
         }
 
-        private async Task<(byte[], string)> getUrlContentsAsync(string url)
+        /// <summary>
+        /// Returns byte array fetched from a url.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns>url contents in byte array</returns>
+        private async Task<byte[]> getUrlContentsAsync(string url)
         {
             var content = new MemoryStream();
 
             // Initialize a WebRequest connection.
             var webReq =(HttpWebRequest)WebRequest.Create(url);
             // Add User-Agent header to avoid 403 and 400 errors
-            webReq.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
+            webReq.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
+                "Chrome/51.0.2704.103 Safari/537.36";
             try
             {
                 Task<WebResponse> getResponseTask = webReq.GetResponseAsync();
@@ -99,39 +105,26 @@ namespace AsyncExampleWPF
                 }
             }
 
-            return (content.ToArray(), url);
+            return content.ToArray();
         }
 
         private async Task SumPageSizesAsync()
         {
+            // Initialize HttpClient for simpler asynchronous execution as compared to WebRequest lib
+            HttpClient client = new HttpClient() { MaxResponseContentBufferSize = 1000000 };
+            // Add user-agent header to avoid 403 and 400 errors.
+            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
             List<string> urlList = SetUpURLList();
-            var getAllUrlsTask = new List<Task<(byte[], string)>>();
+            var total = 0;
 
             foreach (var url in urlList)
             {
-                Task<(byte[], string)> getUrlTask = getUrlContentsAsync(url);
-                getAllUrlsTask.Add(getUrlTask);
-            }
-
-            await callUrlsAsync(getAllUrlsTask);
-        }
-
-        private async Task callUrlsAsync(List<Task<(byte[], string)>> getUrlTasks)
-        {
-            var total = 0;
-
-            while (getUrlTasks.Count != 0)
-            {
-                Task<(byte[], string)> getUrlContentsTask = await Task.WhenAny(getUrlTasks);
-                var res = await getUrlContentsTask;
-                byte[] urlContents = res.Item1;
-                string url = res.Item2;
+                byte[] urlContents = await client.GetByteArrayAsync(url);
                 displayResults(url, urlContents);
                 total += urlContents.Length;
-                getUrlTasks.Remove(getUrlContentsTask);
             }
 
-            resultsTextBox.Text += $"\r\n\r\nTotal bytes returned: {total} \r\n";
+            resultsTextBox.Text += $"\r\n Total bytes returned: {total} \r\n";
         }
 
         private void displayResults(string url, byte[] content)
