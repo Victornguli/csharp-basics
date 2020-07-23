@@ -108,23 +108,57 @@ namespace AsyncExampleWPF
             return content.ToArray();
         }
 
-        private async Task SumPageSizesAsync()
-        {
-            // Initialize HttpClient for simpler asynchronous execution as compared to WebRequest lib
-            HttpClient client = new HttpClient() { MaxResponseContentBufferSize = 1000000 };
-            // Add user-agent header to avoid 403 and 400 errors.
-            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
-            List<string> urlList = SetUpURLList();
-            var total = 0;
 
-            foreach (var url in urlList)
+        private async Task<int> getUrlContentsUsingHttpClientAsync(string url)
+        {
+            HttpClient client = new HttpClient() { MaxResponseContentBufferSize = 1000000 };
+            // Add User-Agent header to avoid 403 and 400 errors
+            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
+                "Chrome/51.0.2704.103 Safari/537.36");
+            try
             {
                 byte[] urlContents = await client.GetByteArrayAsync(url);
                 displayResults(url, urlContents);
-                total += urlContents.Length;
+                return urlContents.Length;
+            }
+            catch (HttpRequestException e)
+            {
+                resultsTextBox.Text += $"\r\nError when processing {url}. {e.Message}\r\n";
             }
 
+            return 0;
+        }
+
+        private async Task SumPageSizesAsync()
+        {
+            List<string> urlList = SetUpURLList();
+
+            IEnumerable<Task<int>> downloadTasksQuery =
+                from url in urlList select getUrlContentsUsingHttpClientAsync(url);
+
+            Task<int>[] downloadTasks = downloadTasksQuery.ToArray();
+
+            // Alternative to using the Query method above:
+            // Initialize the downloadTasks as a List of tasks and use foreach loop
+            // to add the processUrlTasks
+            //List<Task<int>> downloadTasks = new List<Task<int>>();
+            //foreach (var url in urlList)
+            //{
+            //    Task<int> processUrlTask = ProcessUrlAsync(url);
+            //    downloadTasks.Add(processUrlTask);
+            //}
+
+            int[] lengths = await Task.WhenAll(downloadTasks);
+            var total = lengths.Sum();
+
             resultsTextBox.Text += $"\r\n Total bytes returned: {total} \r\n";
+        }
+
+        private async Task<int> ProcessUrlAsync(string url)
+        {
+            var byteArray = await getUrlContentsAsync(url);
+            displayResults(url, byteArray);
+            return byteArray.Length;
         }
 
         private void displayResults(string url, byte[] content)
