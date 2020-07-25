@@ -57,16 +57,20 @@ namespace CancellingTasks
 
             IEnumerable<Task<int>> downloadTasksQuery = 
                 from url in urlList select ProcessUrlAsync(url, client, cts.Token);
-            Task<int>[] downloadTasks = downloadTasksQuery.ToArray();
+            List<Task<int>> downloadTasks = downloadTasksQuery.ToList();
             
-            // Await for any first task that is complete
-            Task<int> finishedTask = await Task.WhenAny(downloadTasks);
+            while (downloadTasks.Count != 0)
+            {
+                // Await for any first task that is complete
+                Task<int> finishedTask = await Task.WhenAny(downloadTasks);
+
+                downloadTasks.Remove(finishedTask);
+                var length = await finishedTask;
+                resultsBox.Text += $"\r\nLength of the downloaded website is {length} \r\n";
+            }
 
             // Cancel all remaining tasks..
             cts.Cancel();
-            var length = await finishedTask;
-            resultsBox.Text += $"\r\nLength of the downloaded website is {length} \r\n";
-
         }
 
 
