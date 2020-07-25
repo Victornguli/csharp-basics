@@ -1,0 +1,15 @@
+﻿<Window x:Class="CancellingTasks.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CancellingTasks"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="resultsBox" HorizontalAlignment="Left" Height="261" Margin="40,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="708" FontFamily="Lucida Console"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="592,317,0,0" VerticalAlignment="Top" Width="156" Height="55" Background="#FF0FF91A" FontSize="20" FontWeight="Bold" Click="startButton_Click" Foreground="Black" BorderBrush="#FF7C7C7C"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="165" Margin="344,317,0,0" Height="55" BorderBrush="#FF7A7A7A" Background="#FFF90909" FontSize="20" FontWeight="Bold" Foreground="#FF1F1F1F" Click="cancelButton_Click"/>
+
+    </Grid>
+</Window>
