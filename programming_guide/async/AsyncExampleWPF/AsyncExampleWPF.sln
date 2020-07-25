@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncExampleWPF", "AsyncExampleWPF.csproj", "{7B80D7C2-4FD4-4745-916D-9C429994E478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CancellingTasks", "..\CancellingTasks\CancellingTasks.csproj", "{0DD9ACBD-E6B1-4142-8AB4-BF4BB18DAB79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7B80D7C2-4FD4-4745-916D-9C429994E478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B80D7C2-4FD4-4745-916D-9C429994E478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B80D7C2-4FD4-4745-916D-9C429994E478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD9ACBD-E6B1-4142-8AB4-BF4BB18DAB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD9ACBD-E6B1-4142-8AB4-BF4BB18DAB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD9ACBD-E6B1-4142-8AB4-BF4BB18DAB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD9ACBD-E6B1-4142-8AB4-BF4BB18DAB79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
