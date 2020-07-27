@@ -89,11 +89,16 @@ namespace CancelAsyncTasks
         {
             List<string> urlList = SetUpURLList();
             HttpClient client = new HttpClient() { MaxResponseContentBufferSize = 1000000 };
-            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36");
+            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36");
 
             IEnumerable<Task<int>> downloadTasksQuery =
                 from url in urlList select ProcessUrlAsync(url, client, cts.Token);
             List<Task<int>> downloadTasks = downloadTasksQuery.ToList();
+
+            // Alternatively process the query as a lambda:
+            // List<Task<int>> downloadTasks = 
+            //   urlList.Select(url => ProcessUrlAsync(url, client, cts.Token)).ToList();
 
             while (downloadTasks.Count > 0)
             {
