@@ -50,6 +50,8 @@ namespace CancelAsyncTasks
 
             try
             {
+                // Cancel all tasks after 10 seconds..
+                cts.CancelAfter(10500);
                 await AccessTheWebAsync(cts);
             }
             catch (OperationCanceledException)
@@ -99,11 +101,13 @@ namespace CancelAsyncTasks
                 Task<int> finishedTask = await Task.WhenAny(downloadTasks);
 
                 downloadTasks.Remove(finishedTask);
-                var length = await finishedTask;
+                await finishedTask;
+                
+                /**
+                //To cancel after a single request is completed. 
+                cts.Cancel();
+                **/
             }
-
-            // Cancel all remaining tasks..
-            cts.Cancel();
         }
 
 
