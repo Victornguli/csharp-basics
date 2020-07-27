@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncReturnTypes", "AsyncRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueTask", "..\ValueTask\ValueTask.csproj", "{0325EF5C-C64D-4E9D-8210-869B5C2FA9E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncStream", "..\AsyncStream\AsyncStream.csproj", "{E7BC69B6-69CB-4FF5-8425-1B9C37F8AFBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0325EF5C-C64D-4E9D-8210-869B5C2FA9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0325EF5C-C64D-4E9D-8210-869B5C2FA9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0325EF5C-C64D-4E9D-8210-869B5C2FA9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BC69B6-69CB-4FF5-8425-1B9C37F8AFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BC69B6-69CB-4FF5-8425-1B9C37F8AFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BC69B6-69CB-4FF5-8425-1B9C37F8AFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BC69B6-69CB-4FF5-8425-1B9C37F8AFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

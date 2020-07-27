@@ -35,8 +35,36 @@ namespace CancellingTasks
             resultsBox.Clear();
             resultsBox.Text += "Clicked Start Button";
             startButton.IsEnabled = false;
-            await AccessTheWebAsync(cts);
-            startButton.IsEnabled = true;
+
+            // *** If a download process is already underway, cancel it.
+            if (cts != null)
+            {
+                cts.Cancel();
+            }
+
+            CancellationTokenSource newCTS = new CancellationTokenSource();
+            cts = newCTS;
+
+            try
+            {
+                await AccessTheWebAsync(cts);
+
+            }
+            catch (OperationCanceledException)
+            {
+                resultsBox.Text += "\r\nDownloads canceled.\r\n";
+            }
+            catch (Exception)
+            {
+                resultsBox.Text += "\r\nDownloads failed.\r\n";
+            }
+            finally
+            {
+                startButton.IsEnabled = true;
+            }
+            // *** When the process is complete, signal that another process can proceed.
+            if (cts == newCTS)
+                cts = null;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
@@ -59,7 +87,7 @@ namespace CancellingTasks
                 from url in urlList select ProcessUrlAsync(url, client, cts.Token);
             List<Task<int>> downloadTasks = downloadTasksQuery.ToList();
             
-            while (downloadTasks.Count != 0)
+            while (downloadTasks.Count > 0)
             {
                 // Await for any first task that is complete
                 Task<int> finishedTask = await Task.WhenAny(downloadTasks);
@@ -89,10 +117,6 @@ namespace CancellingTasks
             catch (HttpRequestException e)
             {
                 resultsBox.Text += $"\r\n{url, -20} Error: {e.Message, 5}";
-            }
-            catch (Exception ex)
-            {
-                resultsBox.Text += $"\r\nError: {ex.Message}";
             }
             return 0;
         }

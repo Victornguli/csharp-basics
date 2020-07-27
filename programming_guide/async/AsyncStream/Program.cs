@@ -10,7 +10,6 @@ namespace AsyncStream
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             await foreach (var word in ReadWordsFromStream()){
                 Console.WriteLine(word);
             }
