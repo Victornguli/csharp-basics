@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadWebAsync", "DownloadWebAsync\DownloadWebAsync.csproj", "{9BA15E43-5D59-4634-ACE9-86CA9026E899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DownloadWebAsync", "DownloadWebAsync\DownloadWebAsync.csproj", "{9BA15E43-5D59-4634-ACE9-86CA9026E899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CancelAsyncTasks", "CancelAsyncTasks\CancelAsyncTasks.csproj", "{1A0347CD-49A6-4ADB-A647-6873FF156C4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncReturnTypes", "AsyncReturnTypes\AsyncReturnTypes.csproj", "{54F09583-98E5-4447-9770-2D2F57833CF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncStream", "AsyncStream\AsyncStream.csproj", "{32F8273C-DA51-4E6A-8726-392B525B7B5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueTasks", "ValueTasks\ValueTasks.csproj", "{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreakfastExample", "BreakfastExample\BreakfastExample.csproj", "{8E30E553-33D4-41D5-B17B-E63ACA64292C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{9BA15E43-5D59-4634-ACE9-86CA9026E899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA15E43-5D59-4634-ACE9-86CA9026E899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA15E43-5D59-4634-ACE9-86CA9026E899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A0347CD-49A6-4ADB-A647-6873FF156C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A0347CD-49A6-4ADB-A647-6873FF156C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A0347CD-49A6-4ADB-A647-6873FF156C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A0347CD-49A6-4ADB-A647-6873FF156C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F09583-98E5-4447-9770-2D2F57833CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F09583-98E5-4447-9770-2D2F57833CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F09583-98E5-4447-9770-2D2F57833CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F09583-98E5-4447-9770-2D2F57833CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F8273C-DA51-4E6A-8726-392B525B7B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F8273C-DA51-4E6A-8726-392B525B7B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F8273C-DA51-4E6A-8726-392B525B7B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F8273C-DA51-4E6A-8726-392B525B7B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
