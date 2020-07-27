@@ -1,0 +1,15 @@
+﻿<Window x:Class="CancelAsyncTasks.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CancelAsyncTasks"
+        mc:Ignorable="d"
+        Title="StartAndCancelAsyncTasks" Height="500" Width="800">
+    <Grid Margin="0,0,0,-44">
+        <Button x:Name="cancelButton" Content="Cancel" Margin="248,402,348,65" FontSize="20" Click="cancelButton_Click"/>
+        <Button x:Name="startButton" Content="Start" Margin="521,402,80,65" FontSize="20" Click="startButton_Click"/>
+        <TextBox x:Name="resultsBox" Text="Results" TextWrapping="Wrap" Margin="72,24,80,286" FontFamily="Lucida Console"/>
+        <TextBox x:Name="errorsBox" Text="Errors" TextWrapping="Wrap" Margin="72,247,80,126" FontFamily="Lucida Console"/>
+    </Grid>
+</Window>
