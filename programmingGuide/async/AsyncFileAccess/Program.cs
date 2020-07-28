@@ -3,7 +3,8 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AsyncFileAccess
 {
@@ -17,8 +18,9 @@ namespace AsyncFileAccess
             /**await WriteTextAsync(filePath, fileText);
             Console.WriteLine("Success!");
             **/
+            await WriteMultipleFilesAsync();
 
-            if (File.Exists(filePath) == false)
+            if (File.Exists(filePath) == true)
             {
                 Console.WriteLine($"File not found: {filePath}");
             }
@@ -64,6 +66,41 @@ namespace AsyncFileAccess
                     sb.Append(text);
                 }
                 return sb.ToString();
+            }
+        }
+
+        private static async Task WriteMultipleFilesAsync()
+        {
+            string folder = @"D:\scripts\newcsharp\programmingGuide\Async\AsyncFileAccess\";
+            List<Task> tasks = new List<Task>();
+            List<FileStream> sourceStreams = new List<FileStream>();
+
+            try
+            {
+                for (int i = 1; i <= 10; i++)
+                {
+                    string text = $"In file {i.ToString()}\r\n";
+                    string fileName = $"thefile{i.ToString("00")}.txt";
+                    string fPath = folder + fileName;
+
+                    FileStream fs = new FileStream(fPath, 
+                        FileMode.Append, FileAccess.Write, FileShare.None, 
+                        bufferSize: 4096, useAsync: true);
+
+                    byte[] encodedText = Encoding.Unicode.GetBytes(text);
+                    Task writeTask = fs.WriteAsync(encodedText, 0, encodedText.Length);
+                    
+                    tasks.Add(writeTask);
+                    sourceStreams.Add(fs);
+                }
+                await Task.WhenAll(tasks);
+            }
+            finally
+            {
+                foreach (FileStream sourceStream in sourceStreams)
+                {
+                    sourceStream.Close();
+                }
             }
         }
     }
