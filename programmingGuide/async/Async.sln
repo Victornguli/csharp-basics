@@ -5,15 +5,19 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DownloadWebAsync", "DownloadWebAsync\DownloadWebAsync.csproj", "{9BA15E43-5D59-4634-ACE9-86CA9026E899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CancelAsyncTasks", "CancelAsyncTasks\CancelAsyncTasks.csproj", "{1A0347CD-49A6-4ADB-A647-6873FF156C4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CancelAsyncTasks", "CancelAsyncTasks\CancelAsyncTasks.csproj", "{1A0347CD-49A6-4ADB-A647-6873FF156C4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncReturnTypes", "AsyncReturnTypes\AsyncReturnTypes.csproj", "{54F09583-98E5-4447-9770-2D2F57833CF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncReturnTypes", "AsyncReturnTypes\AsyncReturnTypes.csproj", "{54F09583-98E5-4447-9770-2D2F57833CF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncStream", "AsyncStream\AsyncStream.csproj", "{32F8273C-DA51-4E6A-8726-392B525B7B5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncStream", "AsyncStream\AsyncStream.csproj", "{32F8273C-DA51-4E6A-8726-392B525B7B5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueTasks", "ValueTasks\ValueTasks.csproj", "{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueTasks", "ValueTasks\ValueTasks.csproj", "{5C765AE8-BA7D-4C1A-AAA4-9F72FE3B51DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreakfastExample", "BreakfastExample\BreakfastExample.csproj", "{8E30E553-33D4-41D5-B17B-E63ACA64292C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreakfastExample", "BreakfastExample\BreakfastExample.csproj", "{8E30E553-33D4-41D5-B17B-E63ACA64292C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReEntrancy", "ReEntrancy\ReEntrancy.csproj", "{F5A54E29-63F0-4BEC-A1DB-4C72086C9533}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncFileAccess", "AsyncFileAccess\AsyncFileAccess.csproj", "{F1C69791-AED8-4C55-AE66-09F29BC81DD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E30E553-33D4-41D5-B17B-E63ACA64292C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A54E29-63F0-4BEC-A1DB-4C72086C9533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A54E29-63F0-4BEC-A1DB-4C72086C9533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A54E29-63F0-4BEC-A1DB-4C72086C9533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A54E29-63F0-4BEC-A1DB-4C72086C9533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C69791-AED8-4C55-AE66-09F29BC81DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C69791-AED8-4C55-AE66-09F29BC81DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C69791-AED8-4C55-AE66-09F29BC81DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C69791-AED8-4C55-AE66-09F29BC81DD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

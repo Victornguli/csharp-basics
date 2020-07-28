@@ -58,8 +58,7 @@ namespace ReEntrancy
             // Equivalent to commented out block above..
             Task<byte[]>[] downloadTasksArray = urlList.Select(url => client.GetByteArrayAsync(url)).ToArray();
 
-            Task handleGroup = HandleGroup(group, urlList, downloadTasksArray);
-            pending = handleGroup;
+            pending = HandleGroup(group, urlList, downloadTasksArray);
 
             resultsBox.Text += $"\r\n#Task assigned for group {group}. Donwload tasks are active.\r\n";
 
